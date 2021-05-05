@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Animation with JavaScript</title>
+</head>
+<body>
+    <section></section>
+    <script>
+        function randomRgba (alpha) {
+            let r = Math.floor(Math.random() * 255)
+            let g = Math.floor(Math.random() * 255)
+            let b = Math.floor(Math.random() * 255)
+            let a = alpha
+            return `rgba(${r},${g},${b},${a})`
+        }
+
+        function createSquare() {
+            const section = document.querySelector('section');
+            const square = document.createElement("span");
+
+            var size = Math.random() * 50;
+
+            square.style.width = 20 + size + "px";
+            square.style.height = 20 + size + "px";
+            square.style.borderRadius =  (20 + size)/3 + "px";
+            square.style.top = Math.random() * innerHeight + "px";
+            square.style.left = Math.random() * innerWidth + "px";
+            square.style.background = randomRgba(Math.random() + 0.2);
+
+            section.appendChild(square);
+
+            setTimeout(() => {
+                square.remove();
+            }, 5000)
+
+        }
+
+        setInterval(createSquare, 100);
+    </script>
+</body>
+</html>
